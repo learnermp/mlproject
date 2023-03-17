@@ -68,8 +68,107 @@ install_requires=get_requirements('requirements.txt')
 ----------------------------------------------------------------------------
 	d) create a folder src and within this folder create a file : __init__.py
 		This helps building entire package and help in ulpoading to pypi, importing    
-      etc.
+      etc. Whatever we are implementing in this project will come under this source called 'src'.
 
     > pip install -r requirements.txt
 
-	Creation of this folder 'mlproject.egg-info' indicated that packages have been installed.
+	 Creation of this folder 'mlproject.egg-info' indicated that packages have been installed.
+
+    > git add .	
+	> git commit -m " Second commit"
+	> git push -u origin main
+
+
+	e) create a folder uder 'src' called 'components' and withon 'components' create '__init__.py', components will als be used as package and can be moved, imported, transported.	
+	   create a file under 'src' called 'data_ingestion.py' for reading data from a database or another source. This file will have all the codes that will be used for reading the data.
+       create a file under the folder 'src' named 'data_transformation.py' for transforming data.
+	   create a file under the folder 'src' named 'model_trainer.py' for transforming data.
+    "Components are basically modules that we will use step wise during our project"
+
+   f) Create a folder under 'src' as 'pipeline'. Within this 'pipeline' we will create '__init__.py', 
+    'train_pipeline.py' and 'predict_pipeline.py
+	g) Create three files under 'src'
+ folders - 1. 'utils.py' 2. 'logger.py' 3. 'exception.py'
+    'utils.py' will have all other functionalities such as mongoclient(), model saving, cloud uploading code etc.
+
+    h) search 'custom execption handling' in python
+
+----------------------------------------------------------------------------
+import sys   
+'''
+Any exception that is getting controlled sys library has that information
+'''
+def error_message_details(error, error_detail:sys):
+    _,_,exc_tb = error_detail.exc_info() 
+    # exc_tb variable has all important details such as kind, in which file, line number etc about error
+    file_name = exc_tb.tb_frame.f_code.co_filename
+    error_message = "Error occured in the python script name [{0}] line number [{}] error message [{3}]".format(file_name, exec_tb.tb_lineno, str(error))
+    return error_message
+
+class CustomException(Exception):
+    def __init__(self, error_message, error_detail:sys):
+        super.__init__(error_message)
+        self.error_message = error_message_details(error_message, error_detail = error_detail)
+
+    def __str__(self):
+        return self.error_message
+----------------------------------------------------------------------------
+	 i) search 'logger' documentation in python
+
+-------------------------
+logger will enable to give textual output of all execution details like time, library installation, 
+exceptions generated etc.
+'''
+import logging
+import os
+from datetime import datetime
+
+LOG_FILE = f"{datetime.now().strftime('%m_%d_%Y_%H_%M_%S')}.log"
+logs_path = os.path.join(os.getcwd(), 'logs', LOG_FILE)
+os.makedirs(logs_path, exist_ok=True)
+
+LOG_FILE_PATH = os.path.join(logs_path, LOG_FILE)
+logging.basicConfig(
+    filename = LOG_FILE_PATH,
+    format =  "[%(asctime)s] %(lineno)d %(name)s - %(levelname)s - %(message)s",
+    level = logging.INFO)
+
+if __name__=='__main__':
+    logging.info("Logging has started...")
+-----------------------------------------------
+	> in terminal run: src/logger.py
+
+----------------------------------------------------
+import sys 
+from src.logger import Logger  
+'''
+Any exception that is getting controlled sys library has that information
+'''
+def error_message_details(error, error_detail:sys):
+    _,_,exc_tb = error_detail.exc_info() 
+    # exc_tb variable has all important details such as kind, in which file, line number etc about error
+    file_name = exc_tb.tb_frame.f_code.co_filename
+    error_message = "Error occured in the python script name [{0}] line number [{1}] error message [{2}]".format(file_name, exc_tb.tb_lineno, str(error))
+    return error_message
+
+class CustomException(Exception):
+    def __init__(self, error_message, error_detail:sys):
+        super().__init__(error_message)
+        self.error_message = error_message_details(error_message, error_detail = error_detail)
+
+    def __str__(self):
+        return self.error_message
+    
+# if __name__=='__main__':
+#     try:
+#         a = 1/0
+#     except Exception as e:
+#         logging.info("Divide by zero error..")
+#         raise CustomException(e, sys)
+--------------------------------------------------
+       
+       
+		
+
+
+    
