@@ -1,0 +1,75 @@
+1. Set up the git hub : create a new repository mlproject
+	a) New environment: in system create a folder mlproject and open vs code there
+		Then, create an environment using the code :
+		conda create -p venv python == 3.8 -y
+		
+        Activate the enviornment just created: 
+		> conda activate venv/
+		Create a new file in vscode: readmme.md
+ 		Add this file in my git repository mlproject : 
+		> git init
+		> git add readme.md
+		> git commit -m "First commit"
+		> git status
+		> cls [optional]
+		> git branch -M main
+		> git remote add origin https://github.com/learnermp/mlproject.git
+		> git remote -v
+		> git config --global user.name
+		> git push -u origin main
+
+		Create .gitignore on gihub
+		> git pull
+
+	b)  requirements.txt
+    c) setup.py
+
+--------------------------------------------------------------------
+
+	from setuptools import find_packages, setup
+
+	setup(
+    name = 'mlproject',
+    version = 0.0.1,
+    author = 'Mrityunjay',
+    author_email = learnermp@gmail.com,
+    packages = find_packages(),
+    install_requires = ['pandas', 'numpy', 'seaborn']
+	)
+    
+---------------------------------------------------------------------
+
+from setuptools import find_packages, setup
+from typing import List
+
+HYPHEN_E_DOT = "-e ."
+def get_requirements(file_path:str)->List[str]:
+    ''' 
+    This function will return a list of rquirements
+
+    '''
+    requirements = []
+    with open(file_path) as file_object:
+        requirements = file_object.readlines()
+        requirements = [req.replace('\n', '') for req in requirements]
+
+        if HYPHEN_E_DOT in requirements:
+            requirements.remove(HYPHEN_E_DOT)
+    return requirements
+
+setup(
+name='mlproject',
+version='0.0.1',
+author='Mrityunjay',
+author_email='learnermp@gmail.com',
+packages=find_packages(),
+install_requires=get_requirements('requirements.txt')
+)
+----------------------------------------------------------------------------
+	d) create a folder src and within this folder create a file : __init__.py
+		This helps building entire package and help in ulpoading to pypi, importing    
+      etc.
+
+    > pip install -r requirements.txt
+
+	Creation of this folder 'mlproject.egg-info' indicated that packages have been installed.
