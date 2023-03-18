@@ -1,3 +1,5 @@
+GIT SETUP/BASIC FILE INFRASTRUCTURE SETUP
+
 1. Set up the git hub : create a new repository mlproject
 	a) New environment: in system create a folder mlproject and open vs code there
 		Then, create an environment using the code :
@@ -16,13 +18,14 @@
 		> git remote add origin https://github.com/learnermp/mlproject.git
 		> git remote -v
 		> git config --global user.name
+		> git config --global user.email
 		> git push -u origin main
 
-		Create .gitignore on gihub
+		Create .gitignore on gihub followed by running the below mentioned code on terminal:
 		> git pull
 
-	b)  requirements.txt
-    c) setup.py
+		b)  requirements.txt
+		c) setup.py
 
 --------------------------------------------------------------------
 
@@ -79,7 +82,7 @@ install_requires=get_requirements('requirements.txt')
 	> git push -u origin main
 
 
-	e) create a folder uder 'src' called 'components' and withon 'components' create '__init__.py', components will als be used as package and can be moved, imported, transported.	
+	e) create a folder uder 'src' called 'components' and within 'components' create '__init__.py', components will als be used as package and can be moved, imported, transported.	
 	   create a file under 'src' called 'data_ingestion.py' for reading data from a database or another source. This file will have all the codes that will be used for reading the data.
        create a file under the folder 'src' named 'data_transformation.py' for transforming data.
 	   create a file under the folder 'src' named 'model_trainer.py' for transforming data.
@@ -140,7 +143,7 @@ if __name__=='__main__':
 
 ----------------------------------------------------
 import sys 
-from src.logger import Logger  
+from src.logger import logging
 '''
 Any exception that is getting controlled sys library has that information
 '''
@@ -165,7 +168,11 @@ class CustomException(Exception):
 #     except Exception as e:
 #         logging.info("Divide by zero error..")
 #         raise CustomException(e, sys)
---------------------------------------------------
+-------------------------------------------------------------------------------------------------
+2. EDA  
+
+If during import pandas, numpy etc. the message pops up 'ipkernel install' appears in the VS Code then in terminal run :
+> conda install jupyter
        
        
 		

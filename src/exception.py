@@ -1,5 +1,5 @@
 import sys 
-from src.logger import Logger  
+from src.logger import logging 
 '''
 Any exception that is getting controlled sys library has that information
 '''
@@ -18,9 +18,9 @@ class CustomException(Exception):
     def __str__(self):
         return self.error_message
     
-# if __name__=='__main__':
-#     try:
-#         a = 1/0
-#     except Exception as e:
-#         logging.info("Divide by zero error..")
-#         raise CustomException(e, sys)
+if __name__=='__main__':
+    try:
+        a = 1/0
+    except Exception as e:
+        logging.info("Divide by zero error..")
+        raise CustomException(e, sys)
