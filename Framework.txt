@@ -169,10 +169,16 @@ class CustomException(Exception):
 #         logging.info("Divide by zero error..")
 #         raise CustomException(e, sys)
 -------------------------------------------------------------------------------------------------
-2. EDA  
+2. EDA on jupyter
 
 If during import pandas, numpy etc. the message pops up 'ipkernel install' appears in the VS Code then in terminal run :
 > conda install jupyter
+
+--------------------------------------------------------------------------------------------------
+3. Model building on Jupyter
+
+--------------------------------------------------------------------------------------------------
+4. 
        
        
 		
