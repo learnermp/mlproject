@@ -241,7 +241,7 @@ if __name__ == "__main__":
     train_arr, test_arr,_ = data_transformation.initiate_data_transformation(train_data, test_data)
 
     modeltrainer = ModelTrainer()
-
+-----------------------------------------------------------
 
 5. data_transformation.py
 
@@ -446,6 +446,10 @@ class ModelTrainer:
 
 
   -----------------------------------------------
+
+7. ....
+
+Deployment: .ebextension provides an instance that will be deployed on cloud.
 
 
 
