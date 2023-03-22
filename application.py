@@ -1,4 +1,4 @@
-from flask import Flask,request,render_template, jsonify
+from flask import Flask,request,render_template
 import numpy as np
 import pandas as pd
 
@@ -34,8 +34,8 @@ def predict_datapoint():
         print(pred_df)
 
         predict_pipeline=PredictPipeline()
-        results=predict_pipeline.predict(pred_df).jsonify
-        return render_template('home.html',results=json(results[0]))
+        results=predict_pipeline.predict(pred_df)
+        return render_template('home.html',results=results[0])
     
 
 if __name__=="__main__":
